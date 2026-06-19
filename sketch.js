@@ -10,11 +10,27 @@ let buttonColoru = 250;
 let buttonColora = 250;
 let buttonColore = 250;
 
+let img1;
+let img2;
+let img3;
+let img4;
+let img5;
+
 function setup() 
 {
     createCanvas(1800,1000);
     background(220);
+    
 }
+
+function preload() {
+    img1 = loadImage("/assets/chamarra.png");
+    img2 = loadImage("/assets/playera.png");
+    img3 = loadImage("/assets/pantalon.png");
+    img4 = loadImage("/assets/calcetines.png");
+    img5 = loadImage("/assets/zapatos.png");
+}
+
 
 function draw()
 {
@@ -35,6 +51,13 @@ function draw()
     square(600,500,150);
     fill(buttonColore);
     square(800,500,150);
+
+
+    image(img1,230,520,100,100);
+    image(img2,420,520,100,100);
+    image(img3,600,520,100,100);
+    image(img4,800,520,100,100);
+    image(img5,1100,520,100,100);
 
 }
 
