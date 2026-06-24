@@ -1,18 +1,14 @@
 
-let chamarra = 0;
-let playera = 0;
-let pantalon = 0;
-let ropainterior = 0;
-let zapatos = 0;
-
-let buttonColorc = 250;
-let buttonColorp = 250;
-let buttonColorpp = 250;
-let buttonColorcc = 250;
-let buttonColorz = 250;
+var ch = false;
+var pl = false;
+var pa = false;
+var ca = false;
+var za = false;
 
 
 
+let litros = 0;
+let mensaje = "";
 let img1;
 let img2;
 let img3;
@@ -26,47 +22,70 @@ function setup()
     
 }
 
-function preload() {
-    img1 = loadImage("/assets/chamarra.png");
-    img2 = loadImage("/assets/playera.png");
-    img3 = loadImage("/assets/pantalon.png");
-    img4 = loadImage("/assets/calcetines.png");
-    img5 = loadImage("/assets/zapatos.png");
-}
 
 
 function draw()
 {
-    background(220);
+    background(240);
     textSize(80);
     fill(0);
     textFont("Times New Roman"); 
 
     text("s/agua", 700, 100);
     text("¿Cuántas prendas traes el día de hoy?" ,200, 400);
-
+    
+    if (ch){
+        fill(39,245,49);    
+    }else{
+        fill(255);
+    }
     noStroke();
-    fill(buttonColorc);
     square(250,500,150);
-    fill(buttonColorp);
-    square(480,500,150); //botón
-    fill(buttonColorpp);
+
+    if (pl){
+        fill(39,245,49);
+    }else{
+        fill(255);
+    }
+    noStroke();
+    square(480,500,150);
+    
+    if (pa){
+        fill(39,245,49);
+    }else{
+        fill(255);
+    }
+    noStroke();
     square(700,500,150);
-    fill(buttonColorcc);
+
+    if (ca){
+        fill(39,245,49);
+    }else{
+        fill(255);
+    }
+    noStroke();
     square(950,500,150);
-    fill(buttonColorz);
+
+    if (za){
+        fill(39,245,49);
+    }else{
+        fill(255);
+    }
+    noStroke();
     square(1200,500,150);
+    
+    if(ch) litros += 10;
+    if(pl) litros += 10;
+    if(pa) litros += 10;
+    if(ca) litros += 10;
+    if(za) litros += 10;
+    textSize(40);
     fill(0);
-    square(250,700,150);
-    fill(0);
-    square(480,700,150);
-    fill(0);
-    square(700,700,150);
-    fill(0);
-    square(950,700,150);
-    fill(0);
-    square(1200,700,150);
-    fill(0);
+    textFont("Times New Roman"); 
+    text("Litros de agua: " + litros, 650, 700);
+    litros = 0;
+    
+
 
 
 
@@ -81,25 +100,54 @@ function draw()
 }
 
 function mousePressed() {
-    if (mouseX >= 250 && mouseX <= 400 && mouseY >= 500 && mouseY <= 650) {
-        buttonColorc = buttonColorc === 255 ? color(0, 255, 0) : 255;
-    }
+    if(mouseX >= 250 && mouseX <= 400 && mouseY >= 500 && mouseY <= 650){
+        if(ch){
+            ch = false;
 
-    if(mouseX >= 450 && mouseX <= 625 && mouseY >= 500 && mouseY <= 650) {
-        buttonColorp = buttonColorp === 255 ? color(0, 200, 0) : 255;
-        
-    }
-    if(mouseX >= 700 && mouseX <= 850 && mouseY >= 500 && mouseY <= 650) {
-        buttonColorpp = buttonColorpp === 255 ? color(0, 200, 0) : 255;
-    }
-    if(mouseX >= 950 && mouseX <= 1100 && mouseY >= 500 && mouseY <= 650) {
-        buttonColorcc = buttonColorcc === 255 ? color(0, 200, 0) : 255;
-    }
-    if(mouseX >= 1200 && mouseX <= 1350 && mouseY >= 500 && mouseY <= 650) {
-        buttonColorz = buttonColorz === 255 ? color(0, 200, 0) : 255;
-    }
+        }else{
+            ch = true;
 
-    if (buttonColorc && buttonColorp && buttonColorpp && buttonColorcc && buttonColorz) {
-        console.log("4 Litros de agua");
     }
+}
+
+if(mouseX >= 480 && mouseX <= 630 && mouseY >= 500 && mouseY <= 650){
+    if(pl){
+        pl = false;
+    }else{
+        pl = true;
+    }
+}
+if(mouseX >= 700 && mouseX <= 850 && mouseY >= 500 && mouseY <= 650){
+    if(pa){
+        pa = false;
+    }else{
+        pa = true;
+    }
+    }
+if(mouseX >= 950 && mouseX <= 1100 && mouseY >= 500 && mouseY <= 650){
+        if(ca){
+            ca = false;
+        }else{
+            ca = true;
+        }
+}
+
+if(mouseX >= 1200 && mouseX <= 1350 && mouseY >= 500 && mouseY <= 650){
+    if(za){
+        za = false;
+    }else{
+        za = true;
+    }
+}
+
+}
+
+
+
+function preload() {
+    img1 = loadImage("/assets/chamarra.png");
+    img2 = loadImage("/assets/playera.png");
+    img3 = loadImage("/assets/pantalon.png");
+    img4 = loadImage("/assets/calcetines.png");
+    img5 = loadImage("/assets/zapatos.png");
 }
